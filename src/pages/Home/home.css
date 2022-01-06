@@ -1,0 +1,26 @@
+ul {
+  list-style: none;
+  margin: 0px;
+  text-align: initial;
+  padding:  0px;
+}
+a {
+  text-decoration: none;
+  color: aliceblue;
+}
+
+h4{
+    margin: 10px 0px 10px 0px;
+}
+
+a:hover {
+  color: cornflowerblue;
+}
+
+.container_lista-home{
+    display: flex ;
+    flex-direction: column;
+    align-items: center;
+    width: 100%
+    ;
+}

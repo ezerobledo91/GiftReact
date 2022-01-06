@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import './App.css'
+import { SearchResults } from './pages/SearchResults/SearchResults'
+import { Link, Route } from 'wouter'
+import Home from './pages/Home/home'
+import { GiftDetail } from './pages/GiftDetail/giftdetail'
+import StaticContext from './context/StaticContext'
+import { GiftContextProvider } from './context/GiftsContext'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <StaticContext.Provider value={{ name: 'Blanco', suscribete: true }}>
+      <div className='App'>
+        <section className='App-content'>
+          <Link to='/'>GifApp </Link>
+          {/* La api de wouter permite renderizar por ruta, pasando un parametro por url y el componente a renderizar */}
+          <GiftContextProvider>
+            <Route path='/search/:keyword' component={SearchResults} />
+            <Route path='/' component={Home} />
+            <Route path='/gift/:id' component={GiftDetail} />
+          </GiftContextProvider>
+        </section>
+      </div>
+    </StaticContext.Provider>
+  )
 }
 
-export default App;
+export default App
