@@ -1,13 +1,13 @@
 import { React, useState } from 'react'
 import { useLocation } from 'wouter'
 import './home.css'
-import { useGifts } from '../../hooks/useGifts'
-import { ListOfGifts } from '../../components/ListOfGifts'
-import {TrendingSearch} from '../../components/TrendingSearch'
+import { useGifts } from 'hooks/useGifts'
+import { ListOfGifts } from 'components/ListOfGifts'
+import {TrendingSearch} from 'components/TrendingSearch'
 
 export default function Home() {
   const [keyword, setKeyword] = useState('')
-  const [path, pushLocation] = useLocation()
+  const [pushLocation] = useLocation()
   const { gift, loading } = useGifts()
 
   const handleChange = (e) => {

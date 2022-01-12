@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import getTrendingGifts from '../services/getTrendingGifts'
+import getTrendingGifts from 'services/getTrendingGifts'
 import { ListOfTrends } from './ListOfTrends'
 
 export const TrendingSearch = () => {

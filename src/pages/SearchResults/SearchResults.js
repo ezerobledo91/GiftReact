@@ -1,6 +1,6 @@
 import { React } from 'react'
-import { ListOfGifts } from '../../components/ListOfGifts'
-import { useGifts } from '../../hooks/useGifts'
+import { ListOfGifts } from 'components/ListOfGifts'
+import { useGifts } from 'hooks/useGifts'
 
 export const SearchResults = ({ params }) => {
   const { keyword } = params
