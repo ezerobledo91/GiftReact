@@ -1,16 +1,14 @@
 import { React, useState } from 'react'
-import { Link, useLocation } from 'wouter'
+import { useLocation } from 'wouter'
 import './home.css'
 import { useGifts } from '../../hooks/useGifts'
 import { ListOfGifts } from '../../components/ListOfGifts'
-
-const POPULAR_ROUTES = ['Animales', 'Matix', 'Programing']
+import {TrendingSearch} from '../../components/TrendingSearch'
 
 export default function Home() {
   const [keyword, setKeyword] = useState('')
   const [path, pushLocation] = useLocation()
   const { gift, loading } = useGifts()
-
 
   const handleChange = (e) => {
     // Funcion que captura el evento change del input para obtener el valor y cambiar el estado de keyword
@@ -28,14 +26,7 @@ export default function Home() {
       <form onSubmit={searchKeyword}>
         <input placeholder='Ingrese una Busqueda...' onChange={handleChange} value={keyword}></input>
       </form>
-      <h4>Los Gifts más Populares</h4>
-      <ul>
-        {POPULAR_ROUTES.map((popular_routes) => (
-          <li key={popular_routes}>
-            <Link to={`search/${popular_routes}`}>Gifts de {popular_routes}</Link>
-          </li>
-        ))}
-      </ul>
+      <TrendingSearch/>
       <h4>Ultimos Gifts</h4>
       <>{loading ? <span> CARGANDO ..... </span> : <ListOfGifts gift={gift} />}</>
       
