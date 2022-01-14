@@ -3,11 +3,11 @@ import { useLocation } from 'wouter'
 import './home.css'
 import { useGifts } from 'hooks/useGifts'
 import { ListOfGifts } from 'components/ListOfGifts'
-import {TrendingSearch} from 'components/TrendingSearch'
+import TrendingSearch from 'components/TrendingSearch'
 
 export default function Home() {
   const [keyword, setKeyword] = useState('')
-  const [pushLocation] = useLocation()
+  const [location, pushLocation] = useLocation()
   const { gift, loading } = useGifts()
 
   const handleChange = (e) => {
@@ -26,10 +26,11 @@ export default function Home() {
       <form onSubmit={searchKeyword}>
         <input placeholder='Ingrese una Busqueda...' onChange={handleChange} value={keyword}></input>
       </form>
-      <TrendingSearch/>
-      <h4>Ultimos Gifts</h4>
-      <>{loading ? <span> CARGANDO ..... </span> : <ListOfGifts gift={gift} />}</>
-      
+      <div className='container-home'>
+        <h4>Ultimos Gifts</h4>
+        <>{loading ? <span> CARGANDO ..... </span> : <ListOfGifts gift={gift} />}</>
+      </div>
+      <TrendingSearch />
     </div>
   )
 }

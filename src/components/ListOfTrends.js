@@ -3,20 +3,21 @@ import { Link } from 'wouter'
 
 export const ListOfTrends = ({ name, option }) => {
 const style= {
-  textTransform: 'capitalize'
+  textTransform: 'capitalize',
+  padding:'5px'
 }
 
 
   return (
     <>
       <h4>{name}</h4>
-      <ul>
+      <div className='container-tendencias'>
         {option.map((popular_routes) => (
-          <li key={popular_routes} style={style}>
+          <span key={popular_routes} style={style}>
             <Link to={`search/${popular_routes}`}>{popular_routes}</Link>
-          </li>
+          </span>
         ))}
-      </ul>
+      </div>
     </>
   )
 }

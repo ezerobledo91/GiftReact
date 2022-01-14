@@ -29,3 +29,19 @@ button {
   justify-content: center;
   width: 100%;
 }
+
+.container-home {
+  min-height: 150vh;
+  width: 100%;
+}
+
+.container-tendencias {
+  width: 50%;
+  padding: 10px;
+}
+
+.container-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
