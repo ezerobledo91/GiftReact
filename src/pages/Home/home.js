@@ -3,12 +3,17 @@ import { useLocation } from 'wouter'
 import './home.css'
 import { useGifts } from 'hooks/useGifts'
 import { ListOfGifts } from 'components/ListOfGifts'
-import TrendingSearch from 'components/TrendingSearch'
+import TrendingSearch from 'components/LazyTrending'
 
 export default function Home() {
   const [keyword, setKeyword] = useState('')
   const [location, pushLocation] = useLocation()
-  const { gift, loading } = useGifts()
+  const { gift, loading, setPage } = useGifts()
+
+  const handleNextPage = () => {
+    setPage(prevPage => prevPage + 1)
+
+  }
 
   const handleChange = (e) => {
     // Funcion que captura el evento change del input para obtener el valor y cambiar el estado de keyword
@@ -30,6 +35,7 @@ export default function Home() {
         <h4>Ultimos Gifts</h4>
         <>{loading ? <span> CARGANDO ..... </span> : <ListOfGifts gift={gift} />}</>
       </div>
+      <button onClick={handleNextPage}> Next page</button>
       <TrendingSearch />
     </div>
   )

@@ -1,8 +1,8 @@
 import { API_KEY, URI } from "./config"
 
 
-export default function getGifts({keyword}) {
-  const apiURL = `${URI}gifs/search?api_key=${API_KEY}&q=${keyword}&limit=25&offset=0&rating=g&lang=en`
+export default function getGifts({ page = 0, limit = '25', keyword ='Matrix'}) {
+  let apiURL = `${URI}gifs/search?api_key=${API_KEY}&q=${keyword}&limit=${limit}&offset=${page * limit}&rating=g&lang=en`
 
   return fetch(apiURL)
     .then((res) => res.json())

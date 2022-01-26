@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react"
 
-export function useNearScreen() {
+export function useNearScreen(distance = '100px') {
     const [isIntersected, setShow] = useState(false)
     const elementRef = useRef()
     useEffect(() => {
@@ -13,7 +13,7 @@ export function useNearScreen() {
         }
 
         const observer = new IntersectionObserver(onChange, {
-            rootMargin: '100px',
+            rootMargin: distance,
         })
 
         const elementoAObservar = elementRef.current
